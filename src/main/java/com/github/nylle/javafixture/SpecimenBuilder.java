@@ -41,19 +41,24 @@ public class SpecimenBuilder<T> {
       customize(x));
   }
 
-  public SpecimenBuilder<T> with(Consumer<T> function) {
+  public SpecimenBuilder<T> perform(Consumer<T> function) {
     functions.add(function);
     return this;
   }
 
-  public SpecimenBuilder<T> with(String fieldName, Object value) {
-    ignoredFields.add(fieldName);
-    customFields.put(fieldName, value);
+  public SpecimenBuilder<T> with(Consumer<T> function) {
+    //subclass and reflect any private or public field
     return this;
   }
 
-  public SpecimenBuilder<T> without(String fieldName) {
-    ignoredFields.add(fieldName);
+  //  public SpecimenBuilder<T> with(String fieldName, Object value) {
+  //    ignoredFields.add(fieldName);
+  //    customFields.put(fieldName, value);
+  //    return this;
+  //  }
+  //
+  public SpecimenBuilder<T> without(Consumer<T> function) {
+    //subclass and reflect any private or public field
     return this;
   }
 
